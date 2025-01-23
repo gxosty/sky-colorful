@@ -1,7 +1,6 @@
 #pragma once
 
-namespace clr
+namespace clr::ui::main_menu
 {
-    bool initialize();
     void draw(bool* menu_open);
 }

@@ -1,5 +1,5 @@
 //
-// Created by Lukas on 22/07/2022.
+// Created by gxost on 22/01/2025
 //
 
 #include "main.h"
@@ -7,19 +7,24 @@
 #include "include/imgui/imgui.h"
 #include "include/misc/Logger.h"
 
+#include <colorful/colorful.hpp>
+
+static bool g_initialized = false;
 
 
-// UI related functions
-void Menu(bool *_pOpen) { // _pOpen is passed by canvas. Used to close and open the mod locally
-    ImGui::Checkbox("Close me!", (bool *)(_pOpen));
+void Menu(bool* menu_open) {
+    clr::draw(menu_open);
 }
 
-// Called in a later stage of game initialisation
 void InitLate() {
 
 }
 
-// Called at the start of the game
 void Init() {
+    g_initialized = clr::initialize();
 
+    if (!g_initialized)
+    {
+        LOGE("Failed initializing 'colorful'");
+    }
 }

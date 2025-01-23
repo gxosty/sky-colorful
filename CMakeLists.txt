@@ -81,12 +81,18 @@ set(RENAMED_CUR_NAME lib${CUR_NAME}-${LIB_VERSION}.so)
 add_compile_definitions(__LIB_VERSION__="${LIB_VERSION}") # You can use lib_version inside your sources
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/src)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 
 add_library( # Sets the name of the library.
 	${CUR_NAME}
 	SHARED
 	main.cpp
+
+	src/colorful/colorful.cxx
+	src/colorful/outfit_options.cxx
+	src/colorful/ui/ui.cxx
+	src/colorful/ui/main_menu.cxx
 )
 
 target_link_libraries(

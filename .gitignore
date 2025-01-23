@@ -1,2 +1,6 @@
 /build/
 /Preload.cmake
+/DyeColorDefs.json
+/OutfitDefs.json
+/*.py
+*.pyc
