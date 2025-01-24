@@ -90,7 +90,8 @@ add_library( # Sets the name of the library.
 	main.cpp
 
 	src/colorful/colorful.cxx
-	src/colorful/outfit_options.cxx
+	src/colorful/sky/outfits.cxx
+	src/colorful/sky/dye_colors.cxx
 	src/colorful/ui/ui.cxx
 	src/colorful/ui/main_menu.cxx
 )

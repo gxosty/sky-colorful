@@ -1,6 +1,6 @@
 #include "main_menu.hpp"
-#include "../outfit_options.hpp"
-#include "../sky/dye_color_defs.hpp"
+#include "../sky/outfits.hpp"
+#include "../sky/dye_colors.hpp"
 
 #include <imgui/imgui.h>
 
@@ -17,7 +17,7 @@ namespace clr::ui::main_menu
         }
         else
         {
-            Color& color = outfit->get_current_primary_dye();
+            Color& color = outfit->get_current_icon_color();
             ImGui::ColorEdit3("primary_dye", (float*)&color.r);
         }
     }

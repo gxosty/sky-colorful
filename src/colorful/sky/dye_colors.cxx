@@ -1,11 +1,8 @@
-#include "dye_color.hpp"
+#include "dye_colors.hpp"
 
-#include <array>
-
-#if 1
 namespace clr
 {
-    const std::array<const DyeColor, 73> dyes = {
+    const std::array<const DyeColor, DYE_COLOR_COUNT> _dyes = {
         (DyeColor) {
             .name = "black",
             .primary_dye = "black",
@@ -883,5 +880,9 @@ namespace clr
             .id = 50
         }
     };
+
+    const std::array<const DyeColor, DYE_COLOR_COUNT>& get_dyes()
+    {
+        return _dyes;
+    }
 }
-#endif

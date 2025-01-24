@@ -1,4 +1,4 @@
-#include "outfit_options.hpp"
+#include "outfits.hpp"
 
 namespace clr
 {

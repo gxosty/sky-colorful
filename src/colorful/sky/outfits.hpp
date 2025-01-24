@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sky/outfit.hpp"
+#include "outfit.hpp"
 
 #include <string>
 #include <vector>

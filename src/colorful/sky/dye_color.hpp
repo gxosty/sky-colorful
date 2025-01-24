@@ -1,5 +1,7 @@
 #pragma once
 
+#include "color.hpp"
+
 #include <cstdint>
 #include <string>
 

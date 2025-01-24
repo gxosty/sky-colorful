@@ -17,3 +17,7 @@
 // (Color)
 // option->secondary_dye
 #define OO_SECONDARY_DYE_OFFSET 1024
+
+// (Color)
+// option->icon_hsv
+#define OO_ICON_COLOR_OFFSET 960
