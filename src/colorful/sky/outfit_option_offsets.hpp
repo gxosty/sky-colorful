@@ -25,3 +25,7 @@
 // (Color)
 // option->icon_hsv
 #define CLR_OO_ICON_COLOR_OFFSET 960
+
+// (bool)
+// option->color_override
+#define CLR_OO_COLOR_OVERRIDE 1008

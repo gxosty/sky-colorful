@@ -19,6 +19,9 @@ list(APPEND COLORFUL_SRC_FILES
 	src/colorful/sky/outfits.cxx
 	src/colorful/ui/ui.cxx
 	src/colorful/ui/main_menu.cxx
+	src/colorful/ui/utils.cxx
+	src/colorful/ui/widgets/color_circle_button.cxx
+	src/colorful/ui/widgets/image_button.cxx
 )
 
 ### Here starts set up of cross-compile variables ###

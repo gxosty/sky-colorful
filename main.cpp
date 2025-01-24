@@ -13,7 +13,10 @@ static bool g_initialized = false;
 
 
 void Menu(bool* menu_open) {
-    clr::draw(menu_open);
+    if (*menu_open)
+    {
+        clr::draw(menu_open);
+    }
 }
 
 void InitLate() {

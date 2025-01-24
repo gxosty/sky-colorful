@@ -22,10 +22,16 @@ namespace clr
         return nullptr;
     }
 
-    Outfit* get_outfit_by_name(const std::string& name)
+    Outfit* get_outfit_by_name(const std::string& name, OutfitSlot slot)
     {
         for (auto& outfit : _outfits)
         {
+            if ((slot != -1) && (outfit.get_slot() != slot))
+            {
+                // small optimization
+                continue;
+            }
+
             if (outfit.get_name() == name)
             {
                 return &outfit;
