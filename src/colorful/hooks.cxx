@@ -2,6 +2,7 @@
 #include <Cipher/CipherUtils.h>
 #include <misc/Logger.h>
 
+#include "sky/avatar.hpp"
 #include "sky/outfit.hpp"
 
 #include <cstdint>
@@ -26,7 +27,26 @@ namespace clr::hooks
     HOOK_DEF(bool, _outfit_option__serialize, uintptr_t outfit_option_ptr, uintptr_t json_object)
     {
         bool res = orig_outfit_option__serialize(outfit_option_ptr, json_object);
-        clr::_outfits.emplace_back(outfit_option_ptr);
+
+        // check if OutfitOption has isSkyKid field set to 1
+        if (*(uint8_t*)(outfit_option_ptr + CLR_OO_IS_SKY_KID_OFFSET))
+        {
+            clr::_outfits.emplace_back(outfit_option_ptr);
+        }
+
+        return res;
+    }
+
+    HOOK_DEF(long double, _avatar_avatar, uintptr_t avatar_ptr)
+    {
+        auto res = orig_avatar_avatar(avatar_ptr);
+
+        if (!avatar)
+        {
+            LOGI("Avatar wrapper created");
+            avatar = new Avatar(avatar_ptr);
+        }
+
         return res;
     }
 
@@ -46,7 +66,23 @@ namespace clr::hooks
 
         LOGI("OutfitOption::Serialize address found, hooking...");
         SETUP_HOOK(_outfit_option__serialize, outfit_option__serialize__address - 0x18);
-        LOGI("Done");
+        LOGI("Hooked OutfitOption::Serialize");
+
+        const char* avatar_avatar__pattern = "60 82 01 AD 60 82 02 AD 60 82 03 AD 60 82 04 AD ?? ?? 00 ??";
+        uintptr_t avatar_avatar__address = CipherUtils::CipherScanPattern(
+            avatar_avatar__pattern,
+            Flags::ReadAndExecute
+        );
+
+        if (!avatar_avatar__address)
+        {
+            LOGE("Avatar::Avatar scan failed");
+            return false;
+        }
+
+        LOGI("Avatar::Avatar address found, hooking...");
+        SETUP_HOOK(_avatar_avatar, avatar_avatar__address - 0x6C);
+        LOGI("Hooked Avatar::Avatar");
 
         return true;
     }

@@ -8,6 +8,19 @@ if (NOT EXISTS ${CIPHER_PATH})
 	message(STATUS "Status: ${LIB_CIPHERED_DOWNLOAD_STATUS}")
 endif()
 
+### Sources
+list(APPEND COLORFUL_SRC_FILES
+	main.cpp
+
+	src/colorful/colorful.cxx
+	src/colorful/sky/avatar.cxx
+	src/colorful/sky/avatar_outfit.cxx
+	src/colorful/sky/dye_colors.cxx
+	src/colorful/sky/outfits.cxx
+	src/colorful/ui/ui.cxx
+	src/colorful/ui/main_menu.cxx
+)
+
 ### Here starts set up of cross-compile variables ###
 
 if (WIN32)
@@ -87,13 +100,8 @@ link_directories(${CMAKE_SOURCE_DIR}/lib)
 add_library( # Sets the name of the library.
 	${CUR_NAME}
 	SHARED
-	main.cpp
 
-	src/colorful/colorful.cxx
-	src/colorful/sky/outfits.cxx
-	src/colorful/sky/dye_colors.cxx
-	src/colorful/ui/ui.cxx
-	src/colorful/ui/main_menu.cxx
+	${COLORFUL_SRC_FILES}
 )
 
 target_link_libraries(
