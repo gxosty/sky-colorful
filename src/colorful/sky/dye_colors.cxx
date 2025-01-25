@@ -85,7 +85,7 @@ namespace clr
             .secondary_dye = CLR_DYE_COLOR_NONE,
             .color = (Color) {
                 .r = 0.42807474628889924f,
-                .g = 0.2142051461171666f,
+                .g = 0.2142051471171666f,
                 .b = 0.41964460855280894f,
                 .a = 1.0f
             },

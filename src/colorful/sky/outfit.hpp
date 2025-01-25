@@ -164,15 +164,15 @@ namespace clr
         void set_current_primary_dye(const Color& color)
         {
             *(Color*)(_this + CLR_OO_PRIMARY_DYE_OFFSET) = color;
-            set_current_color_override(1);
             _primary_dye_changed = true;
+            set_current_color_override(1);
         }
 
         void set_current_secondary_dye(const Color& color)
         {
             *(Color*)(_this + CLR_OO_SECONDARY_DYE_OFFSET) = color;
-            set_current_color_override(1);
             _secondary_dye_changed = true;
+            set_current_color_override(1);
         }
 
         void restore_color_override()
@@ -183,15 +183,15 @@ namespace clr
         void restore_primary_dye()
         {
             *(Color*)(_this + CLR_OO_PRIMARY_DYE_OFFSET) = _primary_dye;
-            restore_color_override();
             _primary_dye_changed = false;
+            _check_and_restore_color_override();
         }
 
         void restore_secondary_dye()
         {
             *(Color*)(_this + CLR_OO_SECONDARY_DYE_OFFSET) = _secondary_dye;
-            restore_color_override();
             _secondary_dye_changed = false;
+            _check_and_restore_color_override();
         }
 
     private:
@@ -219,6 +219,16 @@ namespace clr
                 return CLR_OUTFIT_SLOT_HAT;
 
             return CLR_OUTFIT_SLOT_UNDEFINED;
+        }
+
+        void _check_and_restore_color_override()
+        {
+            if (_primary_dye_changed || _secondary_dye_changed)
+            {
+                return;
+            }
+
+            restore_color_override();
         }
 
     private:
