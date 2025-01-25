@@ -63,7 +63,7 @@ namespace clr::ui::widgets
                 ImGui::ColorConvertFloat4ToU32(style.Colors[ImGuiCol_ButtonActive]),
                 style.FrameRounding,
                 0,
-                dp(2)
+                dp(1)
             );
         }
 

@@ -73,7 +73,7 @@ namespace clr::ui::widgets
                 radius,
                 IM_COL32_WHITE,
                 0,
-                dp(2)
+                dp(1)
             );
         }
 

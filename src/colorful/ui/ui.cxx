@@ -56,10 +56,10 @@ namespace clr::ui
         ImGuiStyle& style = ImGui::GetStyle();
 
         ImGui::SetNextWindowSize(ImVec2(
-            style.WindowPadding.x * 2.0f + dp(216) + style.CellPadding.x * 15.0f,
+            style.WindowPadding.x * 2.0f + dp(288) + style.CellPadding.x * 15.0f,
             0.0f
         ), ImGuiCond_Once);
-        if (ImGui::Begin("Colorful v" __LIB_VERSION__))
+        if (ImGui::Begin("Colorful v" __LIB_VERSION__, nullptr, ImGuiWindowFlags_NoScrollbar))
         {
             main_menu::draw(menu_open);
         } ImGui::End();

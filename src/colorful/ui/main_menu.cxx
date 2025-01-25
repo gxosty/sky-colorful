@@ -84,19 +84,19 @@ namespace clr::ui::main_menu
         int res = -1;
         const std::vector<const DyeColor*>& base_dyes = get_base_dyes();
 
-        if (ImGui::BeginTable(label, 2))
+        if (ImGui::BeginTable(label, 3))
         {
             ImGui::TableSetupColumn("dye_left", ImGuiTableColumnFlags_WidthFixed, dp(36));
+            ImGui::TableSetupColumn("dye_mid", ImGuiTableColumnFlags_WidthFixed, dp(36));
             ImGui::TableSetupColumn("dye_right", ImGuiTableColumnFlags_WidthFixed, dp(36));
 
             ImGui::TableNextRow();
-            ImGui::TableSetColumnIndex(0);
 
             for (int i = 0; i < base_dyes.size(); i++)
             {
-                if (i == 5)
+                if (i % 3 == 0)
                 {
-                    ImGui::TableSetColumnIndex(1);
+                    ImGui::TableSetColumnIndex(i / 3);
                 }
 
                 bool is_selected = selected_dye == base_dyes[i]->primary_dye;
@@ -316,8 +316,8 @@ namespace clr::ui::main_menu
 
         if (ImGui::BeginTable("#dye_tabs", 2))
         {
-            ImGui::TableSetupColumn("dyes1", ImGuiTableColumnFlags_WidthFixed, dp(36) * 2 + style.CellPadding.x * 2);
-            ImGui::TableSetupColumn("dyes2", ImGuiTableColumnFlags_WidthFixed, dp(36) * 2 + style.CellPadding.x * 2);
+            ImGui::TableSetupColumn("dyes1", ImGuiTableColumnFlags_WidthFixed, dp(108) + style.CellPadding.x * 4);
+            ImGui::TableSetupColumn("dyes2", ImGuiTableColumnFlags_WidthFixed, dp(108) + style.CellPadding.x * 4);
 
             ImGui::TableNextRow();
 
@@ -357,8 +357,8 @@ namespace clr::ui::main_menu
 
         if (ImGui::BeginTable("#dye_pickers", 2))
         {
-            ImGui::TableSetupColumn("dyes1", ImGuiTableColumnFlags_WidthFixed, dp(72) + style.CellPadding.x * 2);
-            ImGui::TableSetupColumn("dyes2", ImGuiTableColumnFlags_WidthFixed, dp(72) + style.CellPadding.x * 2);
+            ImGui::TableSetupColumn("dyes1", ImGuiTableColumnFlags_WidthFixed, dp(108) + style.CellPadding.x * 4);
+            ImGui::TableSetupColumn("dyes2", ImGuiTableColumnFlags_WidthFixed, dp(108) + style.CellPadding.x * 4);
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
